@@ -34,6 +34,11 @@
                                 <input type="file" class="form-control p-4" name="photo" placeholder="Your Email"   />
                     
                             </div>
+                            <select name="category_id">
+                                @foreach ($categories as $k )
+                                <option value="{{$k->id}}">{{ $k->name }}</option>
+                                @endforeach
+                            </select>
                             <div class="control-group mb-5">
                                 <textarea class="form-control p-4" rows="3" name="short_content" placeholder="sahipa Short content kiritig"  ></textarea>
                                 @error('short_content')

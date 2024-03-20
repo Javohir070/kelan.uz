@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,8 @@ Route::get("register", [AuthController::class,"register"])->name("register");
 Route::post("register", [AuthController::class,"register_store"])->name('register.store');
 Route::post("authenticate", [AuthController::class,"authenticate"])->name('authenticate');
 Route::post('logout', [AuthController::class,'logout'])->name('logout');
+
+Route::post('comments', [CommentController::class,'store'])->name('comments.store');
 
 Route::resource('posts', PostController::class);
 
