@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get("login", [AuthController::class,"login"])->name("login");
+Route::get("register", [AuthController::class,"register"])->name("register");
+Route::post("register", [AuthController::class,"register_store"])->name('register.store');
+Route::post("authenticate", [AuthController::class,"authenticate"])->name('authenticate');
+Route::post('logout', [AuthController::class,'logout'])->name('logout');
+
+Route::resource('posts', PostController::class);
 
 Route::get('/', [SiteController::class,'index'])->name('home'); 
 Route::get('about', [SiteController::class, "about"])->name("about");

@@ -51,10 +51,20 @@
                         <a href="{{ route('about') }}" class="nav-item nav-link">Biz haqimizda</a>
                         <a href="{{route('service') }}" class="nav-item nav-link">Xizmatler</a>
                         <a href="{{route('project') }}" class="nav-item nav-link">Portfolio</a>
-                        <a href="" class="nav-item nav-link">Blog</a>
+                        <a href="{{ route('posts.index') }}" class="nav-item nav-link">Blog</a>
                         <a href="{{ route('contact') }}" class="nav-item nav-link">A'loqa</a>
                     </div>
-                    <a href="" class="btn btn-primary mr-3 d-none d-lg-block">Kirish</a>
+                    @auth
+                    <a href="{{ route('posts.create') }}" class="btn btn-primary mr-3 d-none d-lg-block">Post yartish</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary mr-3 d-none d-lg-block">{{ Auth()->user()->name }}</a>
+
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-primary mr-3 d-none d-lg-block">Chiqish</button>
+                    </form>
+                    @else
+                    <a href="{{ route('login') }}" class="btn btn-primary mr-3 d-none d-lg-block">Kirish</a>
+                    @endauth
                 </div>
             </nav>
         </div>
