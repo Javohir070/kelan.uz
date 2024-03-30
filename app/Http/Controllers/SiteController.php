@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Korousel;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
     public function index()
     {
-        return view("frontend.home");
+        $karousel = Korousel::first()->get();
+        return view("frontend.home",["karousel"=> $karousel]);
     }
     public function project()
     {
