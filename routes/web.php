@@ -3,6 +3,7 @@
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,8 @@ Route::post('logout', [AuthController::class,'logout'])->name('logout');
 Route::post('comments', [CommentController::class,'store'])->name('comments.store');
 
 Route::resource('posts', PostController::class);
+
+Route::get('lang/{lang}', [LanguageController::class,'lang_tili'])->name('lang.tili');
 
 Route::get('/', [SiteController::class,'index'])->name('home'); 
 Route::get('about', [SiteController::class, "about"])->name("about");
