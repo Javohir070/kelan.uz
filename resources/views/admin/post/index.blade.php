@@ -38,11 +38,6 @@
                         <a class="btn btn-sm btn-primary py-2" href="{{ route('posts.show', ['post'=> $post->id]) }}">O'qish</a>
                     </div>
                 @endforeach
-                
-                
-                
-                
-
 
                 <div class="col-12">
                     <nav aria-label="Page navigation">
