@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PostsExport;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Category;
 use App\Models\Comment;
@@ -10,7 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 class PostController extends Controller
 {
     public function __construct()
@@ -132,5 +134,10 @@ class PostController extends Controller
         }
         $post->delete();
         return redirect()->route("posts.index")->with("success","");
+    }
+
+    public function export() 
+    {
+        return Excel::download(new PostsExport, 'posts.xlsx');
     }
 }

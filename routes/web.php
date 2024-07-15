@@ -34,4 +34,4 @@ Route::get('about', [SiteController::class, "about"])->name("about");
 Route::get('contact', [SiteController::class, "contact"])->name("contact");
 Route::get('project', [SiteController::class, "project"])->name("project");
 Route::get('service', [SiteController::class, "service"])->name("service");
-
+Route::get('export', [PostController::class, 'export']);
